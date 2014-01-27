@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- http://struts.apache.org/2.x/docs/hello-world-using-struts-2.html -->
+
+<struts>
+	<!-- http://struts.apache.org/2.0.11/docs/devmode.html-->
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="global"/>
+
+	<package name="encore-package" extends="struts-default">
+
+		<action name="index">
+			<result>pages/welcome/index.jsp</result>
+		</action>
+	
+		<!-- Image Upload Action -->
+		<action name="doUpload" class="com.katbutler.encore.actions.UploadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">10000000</param>
+			</interceptor-ref>
+			<interceptor-ref name="params">
+				<param name="excludeParams">dojo\..*,^struts\..*</param>
+			</interceptor-ref>
+			<interceptor-ref name="basicStack"/>
+	
+			<result name="success">pages/xml/xml.jsp</result>
+      		<result name="error">pages/xml/error.jsp</result>
+		</action>
+		
+		<!-- Authentication Actions -->
+		<action name="login" class="com.katbutler.encore.actions.AuthenticationAction" method="doLogin">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+		
+		<!-- User Actions -->
+		<action name="getUser" class="com.katbutler.encore.actions.UsersAction" method="getUser">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		<action name="addUser" class="com.katbutler.encore.actions.UsersAction" method="addUser">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		<action name="updateUser" class="com.katbutler.encore.actions.UsersAction" method="updateUser">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		<action name="getAllUsers" class="com.katbutler.encore.actions.UsersAction" method="getAllUsers">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		<action name="addPicUrlToUser" class="com.katbutler.encore.actions.UsersAction" method="addPicUrlToUser">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		<action name="getFollowersForUser" class="com.katbutler.encore.actions.UsersAction" method="getFollowersForUser">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		<action name="setHomeLocationForUser" class="com.katbutler.encore.actions.UsersAction" method="setHomeLocationForUser">
+					<result name="success">pages/xml/xml.jsp</result>
+					<result name="error">pages/xml/error.jsp</result>
+			</action>
+	
+  		<action name="getEventsForUser" class="com.katbutler.encore.actions.UsersAction" method="getEventsForUser">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		<action name="getActivitiesForUser" class="com.katbutler.encore.actions.UsersAction" method="getActivitiesForUser">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		<action name="followNewUser" class="com.katbutler.encore.actions.UsersAction" method="followNewUser">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		
+  		<!-- Event Actions -->
+  		<action name="searchEventsTitle" class="com.katbutler.encore.actions.EventsAction" method="searchEventsTitle">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		<action name="addEventForUser" class="com.katbutler.encore.actions.EventsAction" method="addEventForUser">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		<action name="addEvent" class="com.katbutler.encore.actions.EventsAction" method="addEvent">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		<action name="getEventForId" class="com.katbutler.encore.actions.EventsAction" method="getEventForId">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+  		
+  		<action name="getEventsForDate" class="com.katbutler.encore.actions.EventsAction" method="getEventsForDate">
+    		<result name="success">pages/xml/xml.jsp</result>
+    		<result name="error">pages/xml/error.jsp</result>
+  		</action>
+
+	</package>
+
+</struts>
